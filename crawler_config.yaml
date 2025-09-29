@@ -1,0 +1,40 @@
+# 起始URL配置
+start_urls:
+  - https://www.mjw7.cc/vod/16260/
+
+# 并发与限速
+rate_limit:
+  requests_per_second: 1
+  max_concurrent: 2
+
+# 请求头与代理
+headers:
+  user_agent: auto  # auto: 使用随机UA；或写固定UA字符串
+proxies:
+  enabled: false
+  http: ""
+  https: ""
+
+# 输出配置
+output:
+  json_path: output/simpsons.jsonl
+  csv_path: output/simpsons.csv
+  sqlite_path: output/simpsons.db
+
+# 播放器和下载
+extract_player: true
+download:
+  enabled: true
+  save_dir: downloads/simpsons
+  # {title} 片名, {episode} 集数（如 01、02）, {id} vod id
+  filename_tpl: "{title}_S01E{episode}.mp4"
+
+# 重试配置
+retry:
+  max_attempts: 3
+  backoff_seconds: 1.0
+
+# 音画同步修复配置
+fix_audio_sync:
+  enabled: false  # 设为true时只执行批量修复，不进行爬取
+  download_dir: downloads/simpsons  # 要修复的下载目录
